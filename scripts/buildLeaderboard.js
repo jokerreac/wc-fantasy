@@ -27,6 +27,8 @@ export async function buildLeaderboard() {
 
         })
 
+        teamsWithRecords.sort((a, b) => b.record.points - a.record.points)
+
         return {
             ...player,
             teams : teamsWithRecords,
@@ -60,7 +62,21 @@ function calculateSummary(matches, side) {
     }
     for (const match of matches) {
         if (match.result === side) {
-            summary.points+= 3;
+            if (match.stage === 'GROUP_STAGE' || match.stage === 'LAST_32') {
+                summary.points += 3;
+            }
+            else if (match.stage === 'LAST_16') {
+                summary.points += 6;
+            }
+            else if (match.stage === 'QUARTER_FINALS') {
+                summary.points += 9;
+            }
+            else if (match.stage === 'SEMI_FINALS') {
+                summary.points += 12;
+            }
+            else if (match.stage === 'FINAL') {
+                summary.points += 15;
+            }
             summary.wins += 1;
         }
         else if (match.result === 'DRAW') {

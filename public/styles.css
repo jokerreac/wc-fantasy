@@ -11,6 +11,7 @@
   --green:        #22C55E;
   --draw:         #94A3B8;
   --red:          #EF4444;
+  --blue:         #0066CC;
   --shadow-card:  0 1px 4px rgba(10,22,40,.07), 0 4px 16px rgba(10,22,40,.06);
   --shadow-hover: 0 4px 12px rgba(10,22,40,.12), 0 12px 32px rgba(10,22,40,.10);
   --radius:       14px;
@@ -250,7 +251,7 @@ body {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 22px;
   font-weight: 700;
-  color: var(--green);
+  color: var(--blue);
   line-height: 1;
   display: block;
 }
