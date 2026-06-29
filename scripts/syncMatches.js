@@ -26,7 +26,7 @@ export async function syncMatches() {
         .upsert(res, { onConflict : 'id'})
         .select()
 
-    // console.log(`Upserted ${res.length} matches`)
+    // console.log(`Upserted ${data.length} matches`)
 }
 
 syncMatches();
