@@ -17,7 +17,9 @@ export async function syncMatches() {
             stage : match.stage,
             home_team : match.homeTeam.id,
             away_team : match.awayTeam.id,
-            result : match.score.winner
+            result : match.score.winner,
+            home_score : match.score.fullTime.home,
+            away_score : match.score.fullTime.away
         };
     });
 

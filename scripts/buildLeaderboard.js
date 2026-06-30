@@ -60,8 +60,21 @@ function calculateSummary(matches, side) {
         draws: 0,
         points: 0
     }
+
+    let sideA;
+    let sideB;
+
+    if (side === 'HOME_TEAM') {
+        sideA = 'home_score';
+        sideB = 'away_score';
+    }
+    else if (side === 'AWAY_TEAM') {
+        sideA = 'away_score';
+        sideB = 'home_score';
+    }
+
     for (const match of matches) {
-        if (match.result === side) {
+        if (match[sideA] > match[sideB]) {
             if (match.stage === 'GROUP_STAGE' || match.stage === 'LAST_32') {
                 summary.points += 3;
             }
@@ -79,7 +92,7 @@ function calculateSummary(matches, side) {
             }
             summary.wins += 1;
         }
-        else if (match.result === 'DRAW') {
+        else if (match[sideA] === match[sideB]) {
             summary.points += 1;
             summary.draws +=1;
         }
@@ -100,5 +113,4 @@ function addSummaries (summary1, summary2) {
     };
 }
 
-    
 buildLeaderboard();
